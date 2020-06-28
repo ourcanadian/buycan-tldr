@@ -59,7 +59,7 @@ def handleCall(reddit, comment):
 
     comment.reply(summary)
     
-def main(minu=15):
+def main(minu=10):
     reddit = praw.Reddit('tldr')
 
     # get current time and correct for how far back we want to look

@@ -53,10 +53,12 @@ def handleError(errorcode, url, text):
     else: return "I ran into an unknown error. /u/GlaucomysSabrinus please help..."
 
 def create():
-    if(os.stat('./tmp-about-page-data.json').st_size == 0):
+    TMP_JSON_FILE = './buycan-tldr-TMP.json'
+
+    if(os.stat(TMP_JSON_FILE).st_size == 0):
         return "Sorry, I'm having trouble finding an About page at this url. Maybe /u/GlaucomysSabrinus can help.  \n"+FOOTER
 
-    data = loadJSON('./tmp-about-page-data.json')
+    data = loadJSON(TMP_JSON_FILE)
 
     url = data['url']
     text = data['text']
