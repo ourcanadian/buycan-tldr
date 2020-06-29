@@ -29,14 +29,14 @@ def handleSuccessfulSummary(summary, url):
     header = "This is the best tl;dr I could do for "+summary['sm_api_title']+", [original]("+url+") reduced by "+summary['sm_api_content_reduced']+". (I'm a bot)"
     content = ">"+summary['sm_api_content']
 
-    return header+"  \n"+content+"  \n"+FOOTER
+    return header+"  \n"+content+"  \n\n"+FOOTER
 
 def handleShortAboutPage(url, text):
     header = "Too short for a tl;dr, so here is the full text from [original]("+url+"). (I'm a bot)"
     lines = [line.strip() for line in text if not re.match('^\s*$', line) and len(line.split()) > 3]
     content = ' '.join(lines)
 
-    return header+"  \n"+content+"  \n"+FOOTER
+    return header+"  \n"+content+"  \n\n"+FOOTER
 
 def handleError(errorcode, url, text):
     errorMsg = [
@@ -54,6 +54,9 @@ def handleError(errorcode, url, text):
 
 def create():
     TMP_JSON_FILE = './buycan-tldr-TMP.json'
+
+    if(not os.path.isfile(TMP_JSON_FILE)):
+        return "Sorry, I'm having an issue with the Scrapy library right now. Maybe /u/GlaucomysSabrinus can help.  \n"+FOOTER
 
     if(os.stat(TMP_JSON_FILE).st_size == 0):
         return "Sorry, I'm having trouble finding an About page at this url. Maybe /u/GlaucomysSabrinus can help.  \n"+FOOTER
