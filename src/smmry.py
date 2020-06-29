@@ -36,7 +36,7 @@ def handleShortAboutPage(url, text):
     lines = [line.strip() for line in text if not re.match('^\s*$', line) and len(line.split()) > 3]
     content = ' '.join(lines)
 
-    return header+"  \n"+content+"  \n\n"+FOOTER
+    return header+"  \n>"+content+"  \n\n"+FOOTER
 
 def handleError(errorcode, url, text):
     errorMsg = [
