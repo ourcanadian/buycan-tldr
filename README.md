@@ -1,4 +1,4 @@
-# /r/BuyCanadian TLDR About Bot
+# /r/BuyCanadian TLDR About Bot (buycan-tldr)
 
 ## Using the bot via Reddit
 
